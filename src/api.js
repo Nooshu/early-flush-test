@@ -18,7 +18,7 @@ router.get('/with-flush', (req, res) => {
 
 router.get('/', (req, res) => {
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write('<h1>This is a test!</h1>');
+    res.send('<h1>This is a test!</h1>');
 })
 
 router.get('/without-flush', (req, res) => {
