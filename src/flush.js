@@ -23,7 +23,7 @@ var startHtml = `<!doctype html>
       console.timeEnd('mySlowFunction');
     }
     </script>
-    <script>mySlowFunction(13);</script>
+    <script>mySlowFunction(5);</script>
 </head><body><h1>This is a flush test</h1>`;
 var endHtml = `
 <div align="center"><center>
@@ -40,15 +40,15 @@ var endHtml = `
 <hr>
 
 <p><strong><small><font face="Verdana">This page shall test if the recorder generates
-scripts with requests in correct order. It includes images in sequential order: stadyn_image1.gif
+scripts with requests in correct order. It includes images in sequential order: 
 through </font></small></strong></p>
 
 <hr>
 
-<p><img src="stadyn_image1.gif" width="70" height="70" alt="stadyn_image1.gif (6512 bytes)"><br>
+<p><img src="" width="70" height="70" alt=" (6512 bytes)"><br>
 stadyn_image1</p>
 
-<p><img src="stadyn_image2.gif" width="70" height="70" alt="stadyn_image2.gif (5983 bytes)"><br>
+<p><img src="" width="70" height="70" alt=" (5983 bytes)"><br>
 stadyn_image2</p>
 
 <p align="center"><b><font SIZE="6">Open Financial Exchange<br>
@@ -235,7 +235,7 @@ FACE="Arial">Robust</font></b><font SIZE="2"> - Open Financial Exchange will be 
 executing important financial transactions and for communicating important financial
 information. Assuring users that transactions are executed and information is correct is
 crucial. Open Financial Exchange provides robust protocols for error recovery.</font> </p>
-
+<script>mySlowFunction(5);</script>
 <p><font SIZE="1" FACE="Wingdings">l</font><font SIZE="2"> </font><b><font SIZE="2"
 FACE="Arial">Secure</font></b><font SIZE="2"> - Open Financial Exchange provides a
 framework for building secure online financial services. In Open Financial Exchange,
@@ -595,7 +595,7 @@ COMPRESSION:
 OLDFILEUID:
 NEWFILEUID:</font>
 </pre>
-
+<script>mySlowFunction(5);</script>
 <p><font SIZE="2">The data tag identifies the contents as being in OFX SGML form. VERSION
 identifies the version type as OFXSGML data. In the case of OFXSGML, it translates to the
 version of the Document Type Definition (DTD) that it uses for parsing. The ENCODING and
@@ -788,7 +788,7 @@ Exchange files.</font> </p>
 organizes messages by message set. A message set can appear at most once within an Open
 Financial Exchange block. All messages from a message set must be from the same version of
 that message set.</font> </p>
-
+<script>mySlowFunction(5);</script>
 <p><font SIZE="2">For each message set of <i>XXX</i> and version <i>n</i>, there exists an
 aggregate named &lt;<i>XXX</i>MSGSV<i>n</i>&gt;. (Compare with &lt;<i>XXX</i>MSGSETV<i>n</i>&gt;
 in Chapter 7.) All of the messages from that message set must be inside the appropriate
@@ -1496,10 +1496,10 @@ up have meanings specific to each transaction.</font> </p>
 
 <p>&nbsp;</p>
 
-<p><img src="stadyn_image6.gif" width="70" height="70" alt="stadyn_image6.gif (4356 bytes)"><br>
+<p><img src="" width="70" height="70" alt=" (4356 bytes)"><br>
 stadyn_image6</p>
 
-<p><img src="stadyn_image7.gif" width="223" height="72" alt="stadyn_image7.gif (1702 bytes)"><br>
+<p><img src="" width="223" height="72" alt=" (1702 bytes)"><br>
 stadyn_image7</p>
 
 <p>For general errors, the server can respond with one of the following &lt;CODE&gt;
@@ -2283,7 +2283,7 @@ consequently, there is no special data synchronization for this type of response
 <p><font SIZE="2">The basis for synchronization is a <i>token</i> as defined by the
 &lt;TOKEN&gt; tag. The server is free to create a token in any way it wishes. The client
 simply holds the token for possible use in a future synchronization request. </font></p>
-
+<script>mySlowFunction(5);</script>
 <p><font SIZE="2">The server can derive a token from one of the following: </font>
 
 <ul>
@@ -3228,7 +3228,7 @@ workload.</font> </p>
     Information</font></a> </li>
 </ol>
 
-<p><img src="stadyn_image8.gif" width="214" height="214" alt="stadyn_image8.gif (22120 bytes)"><br>
+<p><img src="" width="214" height="214" alt=" (22120 bytes)"><br>
 stadyn_image8</p>
 
 <p><font SIZE="2">&nbsp;</font></p>
@@ -5339,7 +5339,7 @@ SIZE="2">The response:
 </font>
 </pre>
 
-<pre><img src="stadyn_image9.gif" width="382" height="208" alt="stadyn_image9.gif (7739 bytes)">
+<pre><img src="" width="382" height="208" alt=" (7739 bytes)">
 stadyn_image9</pre>
 
 <p><font SIZE="2">The server also cancels any payments that have been generated but not
@@ -5408,9 +5408,10 @@ SIZE="1" FACE="Courier New">.
 
 <p><img src="" width="174" height="310" alt=" (4217 bytes)"><br>
 stadyn_image10</p>
+<script>mySlowFunction(5);</script>
 </body>`;
 
-router.get('/with-flush', (req, res) => {
+router.get('/with', (req, res) => {
     // var startHtml = fs.readFileSync(require.resolve('./flush/start.html'));
     // var endHtml = fs.readFileSync(require.resolve('./flush/end.html'));
 
@@ -5426,7 +5427,7 @@ router.get('/', (req, res) => {
     });
 })
 
-router.get('/without-flush', (req, res) => {
+router.get('/without', (req, res) => {
     // var startHtml = fs.readFileSync(require.resolve('./flush/start.html'));
     // var endHtml = fs.readFileSync(require.resolve('./flush/end.html'));
 
