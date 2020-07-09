@@ -9,6 +9,7 @@ const router = express.Router();
 var startHtml = `<!doctype html>
 <html>
   <head>
+  <script>window.performance.mark('head_start');</script>
     <meta charset="utf-8">
     <title>Testing the flush mechanism</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,8 +25,10 @@ var startHtml = `<!doctype html>
     }
     </script>
     <script>mySlowFunction(5);</script>
+    <script>window.performance.mark('head_end');</script>
 </head><body><h1>This is a flush test</h1>`;
 var endHtml = `
+<script>window.performance.mark('body_start');</script>
 <div align="center"><center>
 <h1 class="fore">When to load CSS</h1>
 
@@ -5409,6 +5412,7 @@ SIZE="1" FACE="Courier New">.
 <p><img src="" width="174" height="310" alt=" (4217 bytes)"><br>
 stadyn_image10</p>
 <script>mySlowFunction(5);</script>
+<script>window.performance.mark('body_end');</script>
 </body>`;
 
 router.get('/with', (req, res) => {
