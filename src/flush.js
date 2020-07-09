@@ -27,6 +27,8 @@ var startHtml = `<!doctype html>
     <script>mySlowFunction(5);</script>
     <script>window.performance.mark('head_end');</script>
 </head><body><h1>This is a flush test</h1>`;
+
+
 var endHtml = `
 <script>window.performance.mark('body_start');</script>
 <div align="center"><center>
@@ -5420,28 +5422,41 @@ router.get('/with', (req, res) => {
     // var endHtml = fs.readFileSync(require.resolve('./flush/end.html'));
 
     res.writeHead(200, {'Content-Type': 'text/html'});
+    // send the head
     res.write(startHtml);
-    var str = '';
-    for (var i = 0; i < 2000; i++){
-      str += ' ';
-    }
-    res.write(str);
+    // send the end
     res.write(endHtml);
+    // complete
     res.end();
 });
 
-router.get('/', (req, res) => {
-    res.json({
-        'hello': 'hi!!'
-    });
-})
+router.get('/with-padded', (req, res) => {
+  // var startHtml = fs.readFileSync(require.resolve('./flush/start.html'));
+  // var endHtml = fs.readFileSync(require.resolve('./flush/end.html'));
+
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  // send the head
+  res.write(startHtml);
+  // pad out the buffer to clear it
+  var str = '';
+  for (var i = 0; i < 2000; i++){
+    str += ' ';
+  }
+  res.write(str);
+  // send the end
+  res.write(endHtml);
+  // complete
+  res.end();
+});
 
 router.get('/without', (req, res) => {
     // var startHtml = fs.readFileSync(require.resolve('./flush/start.html'));
     // var endHtml = fs.readFileSync(require.resolve('./flush/end.html'));
 
     res.writeHead(200, {'Content-Type': 'text/html'});
+    // send both start and end in 1 chunk
     res.write(startHtml + endHtml);
+    // complete
     res.end();
 });
 
